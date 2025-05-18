@@ -7,7 +7,7 @@ services:
     ports:
       - "4566:4566"  # Porta principal (edge)
     environment:
-      - SERVICES=sqs,lambda
+      - SERVICES=lambda,sqs,logs
       - DEBUG=1
       - LAMBDA_EXECUTOR=docker-reuse
       - DOCKER_HOST=unix:///var/run/docker.sock

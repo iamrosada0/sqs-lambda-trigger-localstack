@@ -56,5 +56,12 @@ aws --endpoint-url=$LOCALSTACK_ENDPOINT lambda create-event-source-mapping \
   --function-name minha-funcao \
   --event-source-arn $QUEUE_ARN \
   --batch-size 1
+echo "8. Criando Tabela..."
+aws --endpoint-url=http://localhost:4566 dynamodb create-table \
+    --table-name Mensagens \
+    --attribute-definitions AttributeName=id,AttributeType=S \
+    --key-schema AttributeName=id,KeyType=HASH \
+    --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 \
+    --region us-east-1
 
 echo "✅ Deploy completo!"

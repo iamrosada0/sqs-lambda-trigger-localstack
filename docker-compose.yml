@@ -1,13 +1,7 @@
 version: '3.8'
 
 services:
-  builder:
-    build: .
-    volumes:
-      - ./:/src
-    working_dir: /src
-    command: bash -c "GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o bootstrap main.go && zip function.zip bootstrap"
-  
+
   localstack:
     image: localstack/localstack:latest
     container_name: localstack
